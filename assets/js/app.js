@@ -51,6 +51,45 @@ var chartGroup = svg.append("g")
     chartGroup.append("g").attr("transform", `translate(0, ${height})`).call(xAxis);
     chartGroup.append("g").call(yAxis);
 
+    //chart shows!
+
+    // Step 5: Create Circles
+    chartGroup.selectAll("circle")
+        .data(USCensusData)
+        .enter()
+        .append("circle")
+        .attr("cx", d=>xScale(d.age))
+        .attr("cy", d=>yScale(d.smokes))
+        .attr("r", "10")
+        .attr("stroke-width", "1")
+        .classed("stateCircle", true)
+        .attr("opacity", 0.5);
+
+
+
+
+
+
+        
+
+       //Create axes labels
+            chartGroup.append("text")
+            .attr("transform", `translate(${width / 2}, ${height + margin.top + 13})`)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "16px")
+            .attr("fill", "black")
+            .style("font-weight", "bold")
+            .text("Age");
+
+            chartGroup.append("text")
+            .attr("y", 0 - ((margin.left / 2) + 2))
+            .attr("x", 0 - (height / 2))
+            .attr("text-anchor", "middle")
+            .attr("font-size", "16px")
+            .attr("fill", "black")
+            .style("font-weight", "bold")
+            .attr("transform", "rotate(-90)")
+            .text("Smokers (%)");
 
 
 
