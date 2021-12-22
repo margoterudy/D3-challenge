@@ -31,4 +31,25 @@ var chartGroup = svg.append("g")
       data.smokes = +data.smokes;
     //   console.log(data); yay data shows!!!
     });
+
+    // Step 2: Create scale functions
+    var xScale = d3.scaleLinear()
+    .domain(d3.extent(USCensusData, d => d.age))
+    .range([0, width])
+    .nice(); //makes the intersection of axes crisp
+
+    var yScale = d3.scaleLinear()
+        .domain([6,d3.max(USCensusData, d => d.smokes)])
+        .range([height, 0])
+        .nice();
+
+    // Step 3: Create axis functions
+    var xAxis = d3.axisBottom(xScale);
+    var yAxis = d3.axisLeft(yScale);
+
+    // Step 4: Append Axes to the chart
+
+
+
+
 })
