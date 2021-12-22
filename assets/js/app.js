@@ -48,6 +48,8 @@ var chartGroup = svg.append("g")
     var yAxis = d3.axisLeft(yScale);
 
     // Step 4: Append Axes to the chart
+    chartGroup.append("g").attr("transform", `translate(0, ${height})`).call(xAxis);
+    chartGroup.append("g").call(yAxis);
 
 
 
