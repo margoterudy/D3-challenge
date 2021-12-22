@@ -22,4 +22,13 @@ var svg = d3
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-  // Import Data - CSV - still activity 9
+  // Import Data - CSV -*still activity 9
+  d3.csv("assets/data/data.csv").then(function(USCensusData) {
+    
+    // Step 1: Parse Data/Cast as numbers
+    USCensusData.forEach(function(data) {
+      data.age = +data.age;
+      data.smokes = +data.smokes;
+    //   console.log(data); yay data shows!!!
+    });
+})
