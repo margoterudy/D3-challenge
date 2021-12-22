@@ -30,7 +30,7 @@ var chartGroup = svg.append("g")
       data.age = +data.age;
       data.smokes = +data.smokes;
 
-    //   console.log(data); yay data shows!!!
+    //console.log(data); yay data shows!!!
 
     });
 
