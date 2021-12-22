@@ -29,7 +29,9 @@ var chartGroup = svg.append("g")
     USCensusData.forEach(function(data) {
       data.age = +data.age;
       data.smokes = +data.smokes;
+
     //   console.log(data); yay data shows!!!
+
     });
 
     // Step 2: Create scale functions
@@ -53,7 +55,7 @@ var chartGroup = svg.append("g")
 
     //chart shows!
 
-    // Step 5: Create Circles
+    // Step 5: Create Circles/Dots
     chartGroup.selectAll("circle")
         .data(USCensusData)
         .enter()
@@ -65,12 +67,25 @@ var chartGroup = svg.append("g")
         .classed("stateCircle", true)
         .attr("opacity", 0.5);
 
+                //I see dots!!!
 
-
-
-
-
-        
+        //Add text to Circles/dots
+            chartGroup.append("g")
+            .selectAll('text')
+            .data(USCensusData)
+            .enter()
+            .append("text")
+            .text(d=>d.abbr)
+            .attr("x",d=>xScale(d.age))
+            .attr("y",d=>yScale(d.smokes))
+            .classed(".stateText", true)
+            .attr("font-family", "times-roman-numeral")
+            .attr("text-anchor", "middle")
+            .attr("fill", "black")
+            .attr("font-size", "8px")
+            .style("font-weight", "bold")
+            .attr("alignment-baseline", "central");
+  
 
        //Create axes labels
             chartGroup.append("text")
@@ -90,7 +105,9 @@ var chartGroup = svg.append("g")
             .style("font-weight", "bold")
             .attr("transform", "rotate(-90)")
             .text("Smokers (%)");
+ 
 
-
-
-})
+//end
+}).catch(function(error) {
+    console.log(error);
+  });
